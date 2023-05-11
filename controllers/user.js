@@ -43,7 +43,7 @@ export const login = async(req,res)=>{
             }
 
 
-            res.set('Authorization', `Bearer ${token}`);
+            res.header("x_auth_token", token)
             res.cookie('token', token, options).json({
               success: true,
               token,

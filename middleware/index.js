@@ -8,7 +8,9 @@ const { JWT_SECRET } = process.env
 export const isLoggedIn = async(req,res,next)=>{
     try {
         // const token = req.header("Authorization")?.replace("Bearer ", " ")  || req.cookies.token || req.headers.authorization.split(" ")[1] 
-        const token = req.headers.authorization.split(" ")[1] 
+        const token = req.headers.authorization.split(" ")[1]  || req.header('x_auth_token')
+        // const token = 
+        // console.log(req.header('x_auth_token'))
 
         
         if(!token) return res.status(404).json({Message : "Token Not Found"})
